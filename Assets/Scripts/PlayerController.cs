@@ -10,6 +10,9 @@ public class PlayerControllerScript : MonoBehaviour
 
     public float jumpForce = 10;
     public float gravityModifier;
+
+    // for remove double jump
+    public bool isOnGround = true;
     void Start()
     {
         // get the rigidbody component and add an upward force to the player
@@ -23,10 +26,16 @@ public class PlayerControllerScript : MonoBehaviour
     void Update()
     {
         // check if the jump action is triggered
-        if (jumpAction.triggered)
+        if (jumpAction.triggered && isOnGround)
         {
             // add an upward force to the player
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        isOnGround = true;
     }
 }
