@@ -660,7 +660,7 @@ MonoBehaviour:
       m_Action: Jump
       m_Flags: 0
     m_Flags: 0
-  jumpForce: 10
+  jumpForce: 8
   gravityModifier: 1
   isOnGround: 1
   gameOver: 0
